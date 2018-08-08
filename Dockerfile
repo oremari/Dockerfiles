@@ -16,7 +16,7 @@ RUN apt-get update && \
    apt-get update && \
 apt-get -y install docker-ce
 
-RUN chmod w+x /var/run/docker.sock
+#RUN chmod a+w /var/run/docker.sock
 
 
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.11.2/bin/linux/amd64/kubectl
@@ -24,9 +24,10 @@ RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin/kubectl
 
 
-RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get\_helm.sh\
-sed 's/openssl sha/openssl sha1/' < get\_helm.sh >get\_helm1.sh\
-chmod 700 get\_helm1.sh\
-./get\_helm1.sh -v v2.4.1
+RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh 
+#RUN sed 's/openssl sha/openssl sha1/' < get_helm.sh >get_helm1.sh
+RUN chmod 700 get_helm.sh
+RUN ./get_helm.sh --version v2.4.1
 
 
+#RUN curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
