@@ -1,0 +1,1 @@
+docker run --cap-add sys_time --security-opt seccomp:unconfined --name jenkins-container --privileged -d -p 49001:8080 -v /var/run/docker.sock:/var/run/docker.sock -v $PWD/jenkins-withdocker:/var/jenkins_home:z -t jenikins-docker-kubectl-helm:1  CMD chmod a+w /var/run/docker.sock 
